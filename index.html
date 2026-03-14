@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AgriPlant Guide</title>
+    <meta
+      name="description"
+      content="A simple crop planting guide for farmers, gardeners, and students."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Manrope:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-theme="light">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="brand">
+        <span class="brand-mark">AgriPlant</span>
+        <span class="brand-sub">Guide</span>
+      </div>
+      <nav class="site-nav">
+        <a href="#home">Home</a>
+        <a href="#guide">Crop Guide</a>
+        <a href="#planning">Planning</a>
+        <a href="#add-crop">Add Crop</a>
+        <a href="#reminders">Reminders</a>
+      </nav>
+      <button class="theme-toggle" type="button" data-theme-toggle>
+        <span class="theme-label" data-theme-label>Light mode</span>
+      </button>
+    </header>
+
+    <main id="main">
+      <section id="home" class="hero view-section" data-view="home">
+        <div class="hero-content">
+          <p class="eyebrow">Plant with confidence</p>
+          <h1>AgriPlant Guide makes planting simple.</h1>
+          <p class="lead">
+            A beginner-friendly crop planting guide that keeps the essentials in
+            one place: seasons, water needs, sunlight, and harvest timing.
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#guide">Explore crop guides</a>
+            <a class="btn ghost" href="#reminders">Set reminders</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-value" id="cropCount">30+</span>
+              <span class="stat-label">Crop guides</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">3</span>
+              <span class="stat-label">Key actions</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">2</span>
+              <span class="stat-label">Themes</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h2>Today&rsquo;s focus</h2>
+          <p>Check sunlight and water needs before planting seedlings.</p>
+          <ul class="tip-list">
+            <li>Warm-season crops need steady moisture.</li>
+            <li>Space plants to improve airflow.</li>
+            <li>Mulch early to reduce weeds.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section view-section" data-view="home">
+        <div class="section-header">
+          <h2>Featured crops</h2>
+          <p>Quick starters for beginners learning planting basics.</p>
+        </div>
+        <div id="featuredGrid" class="crop-grid" aria-live="polite"></div>
+      </section>
+
+      <section id="guide" class="section view-section" data-view="guide">
+        <div class="section-header">
+          <h2>Crop guide</h2>
+          <p>
+            Search for a crop or browse the full planting guide. Click a card
+            to see the full instructions.
+          </p>
+        </div>
+        <div class="search-bar">
+          <label for="cropSearch" class="sr-only">Search crops</label>
+          <input
+            id="cropSearch"
+            type="search"
+            placeholder="Search crops (e.g., Tomato)"
+            autocomplete="off"
+          />
+          <button class="btn outline" type="button" id="clearSearch">
+            Clear
+          </button>
+        </div>
+        <div id="cropGrid" class="crop-grid" aria-live="polite"></div>
+      </section>
+
+      <section id="planning" class="section view-section" data-view="planning">
+        <div class="section-header">
+          <h2>Planting plan basics</h2>
+          <p>Follow these simple steps to plan a healthy crop.</p>
+        </div>
+        <div class="instruction-grid">
+          <article class="instruction-card">
+            <h3>1. Plan the season</h3>
+            <ul>
+              <li>Check last frost dates and heat of summer.</li>
+              <li>Match crops to your growing window.</li>
+            </ul>
+          </article>
+          <article class="instruction-card">
+            <h3>2. Prepare the soil</h3>
+            <ul>
+              <li>Loosen soil 6-8 inches and add compost.</li>
+              <li>Make sure beds drain well after watering.</li>
+            </ul>
+          </article>
+          <article class="instruction-card">
+            <h3>3. Plant with spacing</h3>
+            <ul>
+              <li>Follow depth and spacing recommendations.</li>
+              <li>Label rows to track growth progress.</li>
+            </ul>
+          </article>
+          <article class="instruction-card">
+            <h3>4. Water and feed</h3>
+            <ul>
+              <li>Water deeply, less often, to build roots.</li>
+              <li>Mulch to keep moisture and reduce weeds.</li>
+            </ul>
+          </article>
+          <article class="instruction-card">
+            <h3>5. Monitor and harvest</h3>
+            <ul>
+              <li>Check weekly for pests and disease signs.</li>
+              <li>Harvest at peak size for best flavor.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="add-crop" class="section view-section" data-view="add-crop">
+        <div class="section-header">
+          <h2>Create a crop guide</h2>
+          <p>
+            Add your own crop guide with a picture. Your custom guides are saved
+            in this browser.
+          </p>
+        </div>
+
+        <form class="form-card" id="cropForm" autocomplete="off">
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="cropName">Crop name</label>
+              <input id="cropName" name="name" type="text" required />
+            </div>
+            <div class="form-field">
+              <label for="cropSeason">Planting season</label>
+              <input
+                id="cropSeason"
+                name="season"
+                type="text"
+                placeholder="Warm season (spring to early summer)"
+                required
+              />
+            </div>
+            <div class="form-field">
+              <label for="cropWater">Water requirements</label>
+              <input
+                id="cropWater"
+                name="water"
+                type="text"
+                placeholder="Consistent moisture"
+                required
+              />
+            </div>
+            <div class="form-field">
+              <label for="cropSun">Sunlight needs</label>
+              <input
+                id="cropSun"
+                name="sun"
+                type="text"
+                placeholder="Full sun (6-8 hours)"
+                required
+              />
+            </div>
+            <div class="form-field">
+              <label for="cropHarvest">Harvest time</label>
+              <input
+                id="cropHarvest"
+                name="harvest"
+                type="text"
+                placeholder="70-100 days after planting"
+                required
+              />
+            </div>
+            <div class="form-field">
+              <label for="cropTags">Tags (optional)</label>
+              <input
+                id="cropTags"
+                name="tags"
+                type="text"
+                placeholder="summer, grain, field"
+              />
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="cropGuide">Short planting guide</label>
+            <textarea
+              id="cropGuide"
+              name="guide"
+              rows="3"
+              placeholder="Plant in blocks for better pollination."
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="cropImage">Upload guide picture</label>
+              <input id="cropImage" name="image" type="file" accept="image/*" />
+            </div>
+            <div class="form-field">
+              <label for="cropImageUrl">Or use image URL</label>
+              <input
+                id="cropImageUrl"
+                name="imageUrl"
+                type="url"
+                placeholder="https://example.com/crop.jpg"
+              />
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn primary" type="submit">Add crop guide</button>
+            <p id="cropFormMessage" class="form-message" role="status"></p>
+          </div>
+        </form>
+      </section>
+
+      <section id="reminders" class="section view-section" data-view="reminders">
+        <div class="section-header">
+          <h2>Planting reminders</h2>
+          <p>Add simple reminders to plan your planting schedule.</p>
+        </div>
+
+        <form class="reminder-form" id="reminderForm" autocomplete="off">
+          <div class="form-field">
+            <label for="reminderCrop">Crop name</label>
+            <input
+              id="reminderCrop"
+              name="crop"
+              type="text"
+              placeholder="Tomato"
+              required
+            />
+          </div>
+          <div class="form-field">
+            <label for="reminderDate">Planting date</label>
+            <input id="reminderDate" name="date" type="date" required />
+          </div>
+          <button class="btn primary" type="submit">Add reminder</button>
+        </form>
+      </section>
+
+      <section class="section view-section" data-view="reminders">
+        <div class="section-header">
+          <h2>Upcoming reminders</h2>
+          <p>Keep your planting plans organized in one place.</p>
+        </div>
+        <div id="reminderEmpty" class="empty-state">
+          No reminders yet. Add your first planting plan above.
+        </div>
+        <ul id="reminderList" class="reminder-list"></ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>AgriPlant Guide is built for farmers, gardeners, and students.</p>
+    </footer>
+
+    <div id="cropModal" class="modal is-hidden" aria-hidden="true">
+      <div class="modal-backdrop" data-modal-close></div>
+      <div
+        class="modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+      >
+        <button class="modal-close" type="button" data-modal-close>
+          Close
+        </button>
+        <div id="cropModalBody"></div>
+      </div>
+    </div>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
