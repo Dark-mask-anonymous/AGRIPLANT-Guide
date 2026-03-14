@@ -462,6 +462,19 @@ const updateCropCount = (count) => {
   }
 };
 
+const imageOverrides = {
+  Tomato: "tomato.jpg",
+  Carrot: "carrot.jpg",
+  Corn: "corn.jpg",
+};
+
+const resolveImagePath = (crop) => {
+  if (crop.image && crop.image !== placeholderImage) {
+    return crop.image;
+  }
+  return imageOverrides[crop.name] || `${crop.name}.jpg`;
+};
+
 const instructionLibrary = {
   base: [
     "Prepare soil with compost and make sure it drains well.",
@@ -622,10 +635,7 @@ const createCropCard = (crop, index) => {
   card.classList.add("is-clickable");
   card.tabIndex = 0;
   const image = document.createElement("img");
-  const resolvedImage =
-    crop.image && crop.image !== placeholderImage
-      ? crop.image
-      : `${crop.name}.jpg`;
+  const resolvedImage = resolveImagePath(crop);
   const imageSrc =
     resolvedImage &&
     (resolvedImage.startsWith("data:") || resolvedImage.startsWith("blob:")
@@ -732,11 +742,8 @@ const initCropGuide = () => {
     hero.className = "modal-hero";
 
     const image = document.createElement("img");
-    const modalImage =
-      crop.image && crop.image !== placeholderImage
-        ? crop.image
-        : encodeURI(`${crop.name}.jpg`);
-    image.src = modalImage || placeholderImage;
+    const modalImage = resolveImagePath(crop);
+    image.src = modalImage ? encodeURI(modalImage) : placeholderImage;
     image.alt = crop.name;
     image.onerror = () => {
       image.onerror = null;
